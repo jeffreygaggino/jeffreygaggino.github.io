@@ -31,13 +31,14 @@ body {
 	-webkit-font-smoothing: antialiased;
 }
 
-/* Theme changes should feel like a dimmer, not a strobe. */
-body,
-svg path {
+/*
+ * Theme changes should feel like a dimmer, not a strobe. Drawings run their
+ * own, longer transition; see drawing/Drawing.module.css.
+ */
+body {
 	transition:
-		background-color 200ms ease,
-		color 200ms ease,
-		fill 200ms ease;
+		background-color 340ms ease,
+		color 340ms ease;
 }
 
 @media (prefers-reduced-motion: reduce) {

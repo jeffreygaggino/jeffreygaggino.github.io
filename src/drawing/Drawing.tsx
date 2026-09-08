@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import { TOKEN_VAR } from "../theme/tokens";
 import styles from "./Drawing.module.css";
 import type { DrawingData } from "./types";
@@ -38,10 +39,11 @@ export function Drawing({
 			aria-label={label ?? drawing.label}
 			xmlns="http://www.w3.org/2000/svg"
 		>
-			{drawing.parts.map((part) => (
+			{drawing.parts.map((part, index) => (
 				<path
 					key={part.name}
 					className={styles.part}
+					style={{ "--part-index": index } as CSSProperties}
 					d={part.d}
 					data-solid={part.solid ? "" : undefined}
 					data-hide-line-art={part.hideInLineArt ? "" : undefined}

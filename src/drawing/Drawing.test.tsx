@@ -65,6 +65,14 @@ describe("variants", () => {
 	});
 });
 
+it("staggers the parts so a theme change redraws rather than flickers", () => {
+	const { container } = render(<Drawing drawing={JEFFREY} />);
+	const paths = Array.from(container.querySelectorAll("path"));
+	paths.forEach((path, index) => {
+		expect(path.getAttribute("style")).toContain(`--part-index: ${index}`);
+	});
+});
+
 it("lets a caller override the label", () => {
 	render(<Drawing drawing={JEFFREY} label="Jeffrey waving" />);
 	expect(screen.getByRole("img", { name: "Jeffrey waving" })).toBeVisible();
