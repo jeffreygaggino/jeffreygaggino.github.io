@@ -3,7 +3,7 @@ import { ThemeContext } from "./ThemeContext";
 import { applyTheme, readStoredTheme, type Theme } from "./theme";
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-	// The initialiser runs once, not on every render — the lazy form matters
+	// The initialiser runs once, not on every render. The lazy form matters
 	// here because reading localStorage on each render would be wasteful.
 	const [theme, setTheme] = useState<Theme>(readStoredTheme);
 

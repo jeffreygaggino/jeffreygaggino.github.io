@@ -11,6 +11,9 @@ export const TOKEN_NAMES = [
 	"trouser",
 	"trouserShadow",
 	"eye",
+	"screen",
+	"screenChrome",
+	"brushTint",
 ] as const;
 
 export type TokenName = (typeof TOKEN_NAMES)[number];
@@ -28,4 +31,7 @@ export const TOKEN_VAR: Record<TokenName, string> = {
 	trouser: "var(--token-trouser)",
 	trouserShadow: "var(--token-trouser-shadow)",
 	eye: "var(--token-eye)",
+	screen: "var(--token-screen)",
+	screenChrome: "var(--token-screen-chrome)",
+	brushTint: "var(--token-brush-tint)",
 };

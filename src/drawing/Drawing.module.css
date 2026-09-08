@@ -6,8 +6,52 @@
 }
 
 .part {
-	stroke: var(--drawing-outline);
+	stroke: var(--drawing-line);
 	stroke-width: 2;
 	stroke-linejoin: round;
 	vector-effect: non-scaling-stroke;
+}
+
+/*
+ * Treatments. Each is a variant a caller asks for, never something a Theme
+ * applies on its own, so a Drawing looks the same in light and dark unless
+ * the calling Section deliberately says otherwise.
+ */
+
+/* "filled": each Part painted solid in its Token. The default. */
+.filled .part {
+	fill-opacity: 1;
+}
+
+/* "outline": line art only, the treatment the previous site used behind copy. */
+.outline .part {
+	fill: none;
+	stroke-width: 5;
+}
+
+/*
+ * "wash": barely-there colour under the same blue line the previous site
+ * used. The fill only tints; the line carries the shape.
+ */
+.wash .part {
+	fill-opacity: var(--drawing-wash-fill);
+	stroke-width: 5;
+}
+
+/*
+ * Dark renders the Drawing as line art, so Parts marked solid fill with the
+ * line colour instead of being left open. Light renders the Drawing in full
+ * colour, where each Part's own Token already fills it, so this must not
+ * apply there: --drawing-line is transparent in light and would punch holes.
+ */
+:global([data-theme="dark"]) .wash .part[data-solid],
+:global([data-theme="dark"]) .outline .part[data-solid] {
+	fill: var(--drawing-line);
+	fill-opacity: 1;
+}
+
+/* Parts that only make sense in full colour are dropped from the line art. */
+:global([data-theme="dark"]) .wash .part[data-hide-line-art],
+:global([data-theme="dark"]) .outline .part[data-hide-line-art] {
+	display: none;
 }

@@ -8,6 +8,6 @@ export type ThemeContextValue = {
 
 /**
  * Vue's provide/inject. Kept in its own file so the provider module only
- * exports components — React Fast Refresh gets confused otherwise.
+ * exports components. React Fast Refresh gets confused otherwise.
  */
 export const ThemeContext = createContext<ThemeContextValue | null>(null);

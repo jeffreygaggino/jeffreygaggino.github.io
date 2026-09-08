@@ -1,0 +1,28 @@
+.wrap {
+	position: relative;
+	display: inline-block;
+}
+
+.tag {
+	position: absolute;
+	font-family: "Caveat", "Lucida Handwriting", cursive;
+	font-size: 0.55em;
+	font-weight: 400;
+	line-height: 1;
+	color: var(--code-color);
+	letter-spacing: 0;
+	text-transform: none;
+	white-space: nowrap;
+	user-select: none;
+	pointer-events: none;
+}
+
+.open {
+	left: -0.35em;
+	bottom: calc(100% - 0.25em);
+}
+
+.close {
+	right: -0.35em;
+	top: calc(100% - 0.3em);
+}
