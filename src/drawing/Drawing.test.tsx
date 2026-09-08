@@ -5,10 +5,12 @@ import { Drawing } from "./Drawing";
 import { JEFFREY } from "./jeffrey";
 import { SKILLS } from "./skills";
 import type { DrawingData } from "./types";
+import { WINDOW } from "./window";
 
 const drawings: [string, DrawingData][] = [
 	["Jeffrey", JEFFREY],
 	["skills", SKILLS],
+	["window", WINDOW],
 ];
 
 describe.each(drawings)("Drawing: %s", (_name, drawing) => {

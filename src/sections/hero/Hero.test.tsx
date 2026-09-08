@@ -1,5 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
+import { linkedin } from "../../content/profileLinks";
 import { Hero } from "./Hero";
 import { heroContent } from "./heroContent";
 
@@ -21,6 +22,13 @@ describe("Hero", () => {
 		render(<Hero />);
 		expect(screen.getByText(heroContent.tagline)).toBeVisible();
 		expect(screen.getByText(heroContent.blurb)).toBeVisible();
+	});
+
+	it("links to LinkedIn", () => {
+		render(<Hero />);
+		const link = screen.getByRole("link", { name: linkedin.label });
+		expect(link).toHaveAttribute("href", linkedin.href);
+		expect(link).toHaveAttribute("rel", "noreferrer");
 	});
 
 	it("shows the Drawing", () => {

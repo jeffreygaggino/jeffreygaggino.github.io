@@ -35,6 +35,16 @@
 	max-width: 46ch;
 }
 
+.links {
+	margin: 2rem 0 0;
+}
+
+@media (min-width: 48rem) {
+	.links {
+		margin-top: 3rem;
+	}
+}
+
 .drawing {
 	justify-self: center;
 	max-width: 14rem;

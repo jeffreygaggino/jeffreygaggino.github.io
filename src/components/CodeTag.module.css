@@ -6,7 +6,11 @@
 .tag {
 	position: absolute;
 	font-family: "Caveat", "Lucida Handwriting", cursive;
-	font-size: 0.55em;
+	/*
+	 * Scales with whatever it wraps, but never below a readable size. At
+	 * 0.55em alone the brackets come out around 10px on link-sized text.
+	 */
+	font-size: max(0.55em, 0.95rem);
 	font-weight: 400;
 	line-height: 1;
 	color: var(--code-color);
@@ -28,6 +32,7 @@
 	opacity: 1;
 }
 
+/* Opening tag above and to the left, closing tag below and to the right. */
 .open {
 	left: -0.35em;
 	bottom: calc(100% - 0.25em);

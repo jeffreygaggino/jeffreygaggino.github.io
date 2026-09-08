@@ -11,7 +11,7 @@ export const workContent = {
 		},
 		{
 			name: "Content Submission Hub",
-			body: "Moves finished creative from upload to a live ad, with legal and marketing reviewing at the same time rather than one after the other. Disclosures are placed by dragging them onto the video timeline, and the tool is built for people who are in it all day: keyboard shortcuts, undo, and edits that survive submission.",
+			body: "Moves finished creative from upload to a live ad, with legal and marketing reviewing at the same time rather than one after the other. A multi-file synced preview plays every asset together against a tag-based draggable timeline. Built for people who are in it all day: keyboard shortcuts, undo, and edits that survive submission.",
 		},
 	],
 } as const;
