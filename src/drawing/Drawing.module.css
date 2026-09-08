@@ -1,0 +1,13 @@
+.drawing {
+	width: 100%;
+	height: auto;
+	max-width: 18rem;
+	display: block;
+}
+
+.part {
+	stroke: var(--drawing-outline);
+	stroke-width: 2;
+	stroke-linejoin: round;
+	vector-effect: non-scaling-stroke;
+}

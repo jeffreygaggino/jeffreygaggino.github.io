@@ -1,0 +1,55 @@
+/*
+ * One Palette per Theme. Every colour in the site resolves through these;
+ * no component hardcodes a hex value.
+ *
+ * Dark is the default, so it lives on :root and light overrides it.
+ */
+:root,
+:root[data-theme="dark"] {
+	color-scheme: dark;
+
+	--surface: #0f1b26;
+	--surface-raised: #16242f;
+	--text: #e6edf3;
+	--text-muted: #9fb3c8;
+	--rule: #24323f;
+	--accent: #d95a5f;
+
+	/* Drawing Tokens */
+	--token-ink: #0a0d11;
+	--token-skin: #e8b48c;
+	--token-skin-shadow: #cf7742;
+	--token-shirt: #b8353a;
+	--token-trouser: #1d4557;
+	--token-trouser-shadow: #0a2f3c;
+	--token-eye: #f5f7fa;
+
+	/*
+	 * Dark hair against a dark page would read as a silhouette merging into
+	 * the background, so the Drawing gets a faint outline in this Theme only.
+	 * This is still a colour change — same Parts, same geometry.
+	 */
+	--drawing-outline: rgb(230 237 243 / 0.22);
+}
+
+:root[data-theme="light"] {
+	color-scheme: light;
+
+	--surface: #f1f2f2;
+	--surface-raised: #ffffff;
+	--text: #102a44;
+	--text-muted: #5e85a1;
+	--rule: #d8dee4;
+	--accent: #c22f33;
+
+	/* Drawing Tokens — carried over from the previous site's palette */
+	--token-ink: #030304;
+	--token-skin: #f2bf99;
+	--token-skin-shadow: #e98349;
+	--token-shirt: #c22f33;
+	--token-trouser: #153743;
+	--token-trouser-shadow: #032a34;
+	--token-eye: #ffffff;
+
+	--drawing-outline: transparent;
+}
