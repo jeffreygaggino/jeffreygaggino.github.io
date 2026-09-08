@@ -46,6 +46,24 @@ describe("theme switching", () => {
 		).toBeVisible();
 	});
 
+	it("stops previewing the other theme until the pointer leaves", async () => {
+		// Clicking switches the Theme while the pointer is still on the button.
+		// Without suppression the hover preview would immediately show the
+		// Theme just left, so the icon would look like it flipped back.
+		const user = userEvent.setup();
+		renderToggle();
+		const button = screen.getByRole("button");
+
+		await user.hover(button);
+		expect(button.className).not.toContain("previewOff");
+
+		await user.click(button);
+		expect(button.className).toContain("previewOff");
+
+		await user.unhover(button);
+		expect(button.className).not.toContain("previewOff");
+	});
+
 	it("ignores a junk stored value and falls back to dark", () => {
 		localStorage.setItem("theme", "banana");
 		renderToggle();

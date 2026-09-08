@@ -1,22 +1,121 @@
+/*
+ * The mode switch from the previous site: two circles, no SVG. In dark, a
+ * second circle sits over the first and offsets to the top right, cutting a
+ * crescent out of it. In light, that circle centres and becomes the sun
+ * inside a ring. Hovering previews the Theme you would switch to.
+ *
+ * Unlike a Drawing, this icon depicts the Theme, so it is the one place
+ * where geometry legitimately differs between light and dark.
+ */
+
 .toggle {
 	display: inline-flex;
 	align-items: center;
-	gap: 0.5rem;
-	padding: 0.5rem 0.85rem;
-	border: 1px solid var(--rule);
-	border-radius: 999px;
-	background: var(--surface-raised);
-	color: var(--text);
-	font: inherit;
-	font-size: 0.875rem;
+	justify-content: center;
+	padding: 0;
+	border: 0;
+	background: none;
 	cursor: pointer;
-}
-
-.toggle:hover {
-	border-color: var(--accent);
+	color: inherit;
+	border-radius: 50%;
 }
 
 .toggle:focus-visible {
 	outline: 2px solid var(--accent);
-	outline-offset: 2px;
+	outline-offset: 4px;
+}
+
+.icon {
+	position: relative;
+	display: block;
+	width: 35px;
+	height: 35px;
+}
+
+.moon,
+.sun {
+	position: absolute;
+	display: block;
+	border-radius: 50%;
+	box-sizing: border-box;
+	transform-origin: center center;
+}
+
+/*
+ * The moon is pinned explicitly. With auto offsets it would fall back to its
+ * static position, which for an inline element is measured against the line
+ * box and baseline, not the container's corner, and the two circles stop
+ * lining up.
+ */
+.moon {
+	top: 0;
+	left: 0;
+}
+
+.moon {
+	width: 34px;
+	height: 34px;
+	transition: all 0.25s ease-in-out;
+	transition-delay: 0.2s;
+}
+
+.sun {
+	width: 23px;
+	height: 23px;
+	transition: all 0.4s ease-in-out;
+}
+
+/* Dark: a crescent. */
+:global([data-theme="dark"]) .moon {
+	background-color: #364964;
+	border: 2px solid #364964;
+}
+
+:global([data-theme="dark"]) .sun {
+	/* The cutout matches the page, so the crescent reads as a real hole. */
+	background-color: var(--surface);
+	right: 0;
+	top: 0;
+}
+
+/* Light: a sun inside a ring. */
+:global([data-theme="light"]) .moon {
+	background-color: transparent;
+	border: 2px solid #ffc063;
+}
+
+:global([data-theme="light"]) .sun {
+	background-color: #ffc063;
+	right: 6.3px;
+	top: 5.7px;
+}
+
+/*
+ * Hover shows the Theme you are about to switch to. Pointer devices only,
+ * so it never sticks on a touch screen after a tap.
+ */
+@media (hover: hover) and (min-width: 48rem) {
+	:global([data-theme="dark"]) .toggle:not(.previewOff):hover .moon {
+		border-color: #ffc063;
+		background-color: transparent;
+		transition-delay: 0.2s;
+	}
+
+	:global([data-theme="dark"]) .toggle:not(.previewOff):hover .sun {
+		background-color: #ffc063;
+		right: 6.3px;
+		top: 5.7px;
+	}
+
+	:global([data-theme="light"]) .toggle:not(.previewOff):hover .moon {
+		background-color: #364964;
+		border-color: #364964;
+		transition-delay: 0.2s;
+	}
+
+	:global([data-theme="light"]) .toggle:not(.previewOff):hover .sun {
+		background-color: var(--surface);
+		right: 0;
+		top: 0;
+	}
 }

@@ -7,6 +7,21 @@
 	box-sizing: border-box;
 }
 
+/*
+ * Vertical space between Sections. Sections set this as a margin rather than
+ * padding, so adjacent ones collapse into a single gap instead of adding up.
+ * One value here controls the whole page's rhythm.
+ */
+:root {
+	--section-gap: 6rem;
+}
+
+@media (min-width: 48rem) {
+	:root {
+		--section-gap: 9rem;
+	}
+}
+
 body {
 	margin: 0;
 	background: var(--surface);

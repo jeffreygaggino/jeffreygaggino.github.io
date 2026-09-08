@@ -1,5 +1,4 @@
-import styles from "./App.module.css";
-import { ThemeToggle } from "./components/ThemeToggle";
+import { SiteHeader } from "./components/SiteHeader";
 import { About } from "./sections/about/About";
 import { Hero } from "./sections/hero/Hero";
 import { ThemeProvider } from "./theme/ThemeProvider";
@@ -7,9 +6,7 @@ import { ThemeProvider } from "./theme/ThemeProvider";
 export default function App() {
 	return (
 		<ThemeProvider>
-			<header className={styles.header}>
-				<ThemeToggle />
-			</header>
+			<SiteHeader />
 			<main>
 				<Hero />
 				<About />

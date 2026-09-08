@@ -1,0 +1,7 @@
+/*
+ * Shared body copy styling. Hero and About both use it so the two read as
+ * the same voice rather than drifting apart as their own stylesheets change.
+ */
+.bodyText {
+	color: var(--text-muted);
+}

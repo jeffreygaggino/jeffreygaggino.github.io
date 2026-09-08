@@ -15,6 +15,17 @@
 	white-space: nowrap;
 	user-select: none;
 	pointer-events: none;
+
+	/*
+	 * Hidden until the hand-drawn font has loaded, so the brackets are never
+	 * seen in the fallback typeface. See styles/fontsReady.ts.
+	 */
+	opacity: 0;
+	transition: opacity 400ms ease-in;
+}
+
+:global(.fonts-ready) .tag {
+	opacity: 1;
 }
 
 .open {
