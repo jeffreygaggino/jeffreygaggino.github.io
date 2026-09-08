@@ -65,11 +65,26 @@ describe("variants", () => {
 	});
 });
 
-it("staggers the parts so a theme change redraws rather than flickers", () => {
-	const { container } = render(<Drawing drawing={JEFFREY} />);
-	const paths = Array.from(container.querySelectorAll("path"));
-	paths.forEach((path, index) => {
-		expect(path.getAttribute("style")).toContain(`--part-index: ${index}`);
+describe("theme transition stagger", () => {
+	it("runs from the first part to the last", () => {
+		const { container } = render(<Drawing drawing={JEFFREY} />);
+		const paths = Array.from(container.querySelectorAll("path"));
+		expect(paths[0].getAttribute("style")).toContain("--part-progress: 0");
+		expect(paths[paths.length - 1].getAttribute("style")).toContain(
+			"--part-progress: 1",
+		);
+	});
+
+	it("takes the same total time whatever the part count", () => {
+		// A fixed delay per part made the 4-part window finish long before the
+		// 22-part figure. Both must end at 1.
+		for (const drawing of [JEFFREY, SKILLS, WINDOW]) {
+			const { container } = render(<Drawing drawing={drawing} />);
+			const paths = Array.from(container.querySelectorAll("path"));
+			expect(paths[paths.length - 1].getAttribute("style")).toContain(
+				"--part-progress: 1",
+			);
+		}
 	});
 });
 

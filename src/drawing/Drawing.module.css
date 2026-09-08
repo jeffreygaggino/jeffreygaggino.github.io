@@ -16,15 +16,16 @@
 	 * as before, left fill-opacity and stroke snapping instantly while the
 	 * colour eased, which read as a glitch rather than a change.
 	 *
-	 * Parts are staggered by their order in the data, so the figure redraws
-	 * itself limb by limb instead of flickering at once.
+	 * Parts are staggered across the Drawing so it redraws itself piece by
+	 * piece instead of flickering at once. The delay is a proportion of the
+	 * whole, so every Drawing takes the same time whatever its Part count.
 	 */
 	transition:
 		fill 340ms ease,
 		fill-opacity 340ms ease,
 		stroke 340ms ease,
 		stroke-width 340ms ease;
-	transition-delay: calc(var(--part-index, 0) * 14ms);
+	transition-delay: calc(var(--part-progress, 0) * 700ms);
 }
 
 /*
