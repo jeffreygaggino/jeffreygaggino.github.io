@@ -1,5 +1,5 @@
 export const contactContent = {
 	heading: "Contact",
 	blurb:
-		"If you have a process your team has outgrown, or you just want to talk about how something should be built, come and find me on LinkedIn.",
+		"Always up for a chat about something you are building, or something you would rather stop doing by hand. Feel free to reach out.",
 } as const;
