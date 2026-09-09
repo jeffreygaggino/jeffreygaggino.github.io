@@ -5,6 +5,8 @@ export type InViewOptions = {
 	rootMargin?: string;
 	/** How much of the element must be visible before it counts, 0 to 1. */
 	threshold?: number | number[];
+	/** Stay true once seen. Use for anything holding text. */
+	once?: boolean;
 };
 
 /**
@@ -16,7 +18,7 @@ export type InViewOptions = {
  */
 export function useInView<T extends Element>(
 	ref: RefObject<T | null>,
-	{ rootMargin = "0px", threshold = 0 }: InViewOptions = {},
+	{ rootMargin = "0px", threshold = 0, once = false }: InViewOptions = {},
 ): boolean {
 	const [inView, setInView] = useState(false);
 
@@ -39,7 +41,11 @@ export function useInView<T extends Element>(
 		}
 
 		const observer = new IntersectionObserver(
-			([entry]) => setInView(entry.isIntersecting),
+			([entry]) => {
+				if (!entry.isIntersecting && once) return;
+				setInView(entry.isIntersecting);
+				if (entry.isIntersecting && once) observer.disconnect();
+			},
 			{
 				rootMargin,
 				threshold: thresholdKey.includes(",")
@@ -50,7 +56,7 @@ export function useInView<T extends Element>(
 
 		observer.observe(element);
 		return () => observer.disconnect();
-	}, [ref, rootMargin, thresholdKey]);
+	}, [ref, rootMargin, thresholdKey, once]);
 
 	return inView;
 }

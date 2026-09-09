@@ -14,6 +14,13 @@
  */
 :root {
 	--section-gap: 6rem;
+
+	/*
+	 * Roughly the height of the sticky bar. Hero subtracts it so a full
+	 * height hero fills the screen exactly rather than overflowing by the
+	 * height of the header above it.
+	 */
+	--bar-height: 5rem;
 }
 
 @media (min-width: 48rem) {

@@ -10,7 +10,10 @@
 @media (min-width: 48rem) {
 	.hero {
 		grid-template-columns: 1.6fr 1fr;
-		margin-top: 2rem;
+		margin-top: 0;
+		/* Fills the screen on load, so the first scroll is a deliberate one. */
+		min-height: calc(100svh - var(--bar-height));
+		align-content: center;
 	}
 }
 
@@ -39,7 +42,51 @@
 	margin: 2rem 0 0;
 }
 
+/*
+ * Hero fills the screen on desktop, so its type scales up with it: name,
+ * tagline and blurb all go up by half. The link keeps its size, so it stays
+ * consistent with the same link in Contact.
+ */
+@media (min-width: 48rem) {
+	.name {
+		/*
+		 * Kept to one line: the closing </h1> bracket hangs off the end, so a
+		 * wrap leaves it stranded beside the second line. The vw term shrinks
+		 * the name to fit rather than letting it break.
+		 */
+		font-size: clamp(2.75rem, 5.2vw, 4.5rem);
+		white-space: nowrap;
+	}
+
+	.tagline {
+		font-size: clamp(1.875rem, 3.9vw, 2.625rem);
+		max-width: 20ch;
+		margin-bottom: 1.75rem;
+	}
+
+	.blurb {
+		font-size: 1.125rem;
+		max-width: 46ch;
+	}
+}
+
 .drawing {
+	display: flex;
+	/* justify-self places the wrapper in its column, justify-content the svg inside it. */
 	justify-self: center;
+	justify-content: center;
 	max-width: 14rem;
+	width: 100%;
+}
+
+/*
+ * The hero fills the screen on desktop, so the figure can take the room and
+ * sits flush to the end of its column rather than floating centred in it.
+ */
+@media (min-width: 48rem) {
+	.drawing {
+		max-width: 24rem;
+		justify-self: end;
+		justify-content: flex-end;
+	}
 }

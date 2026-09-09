@@ -12,6 +12,13 @@
 	margin: 0;
 }
 
+/* One grid item holding the copy and the link, so the reveal covers both. */
+.body {
+	display: grid;
+	row-gap: 2rem;
+	justify-items: start;
+}
+
 .blurb {
 	margin: 0;
 	max-width: 52ch;

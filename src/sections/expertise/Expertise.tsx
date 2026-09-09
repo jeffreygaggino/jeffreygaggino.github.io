@@ -10,9 +10,15 @@ export function Expertise() {
 	return (
 		<section id="expertise" className={styles.expertise}>
 			<div className={styles.top}>
-				<h2 className={styles.heading}>
+				<Reveal
+					as="h2"
+					className={styles.heading}
+					once
+					threshold={0.1}
+					rootMargin="0px"
+				>
 					<CodeTag tag="h2">{expertiseContent.heading}</CodeTag>
-				</h2>
+				</Reveal>
 				{/*
 				 * Triggers later than the About drawing. On a tall desktop
 				 * screen both enter the viewport at about the same scroll
@@ -26,7 +32,7 @@ export function Expertise() {
 					<Drawing drawing={WINDOW} variant="wash" />
 				</Reveal>
 			</div>
-			<div className={styles.groups}>
+			<Reveal className={styles.groups} once threshold={0.1}>
 				{expertiseContent.groups.map((group) => (
 					<div key={group.label} className={styles.group}>
 						<h3 className={styles.label}>{group.label}</h3>
@@ -35,7 +41,7 @@ export function Expertise() {
 						</p>
 					</div>
 				))}
-			</div>
+			</Reveal>
 		</section>
 	);
 }

@@ -78,6 +78,57 @@ describe("Reveal", () => {
 		expect(wrapper?.className).not.toContain("visible");
 	});
 
+	it("stays visible once seen when told to only reveal once", () => {
+		// Text that fades out again as you scroll back over it is worse than
+		// no animation at all.
+		const { state } = stubObserver();
+		const { container } = render(
+			<Reveal once>
+				<p>content</p>
+			</Reveal>,
+		);
+		const wrapper = container.firstElementChild;
+
+		act(() => state.callback?.([{ isIntersecting: true }]));
+		expect(wrapper?.className).toContain("visible");
+
+		act(() => state.callback?.([{ isIntersecting: false }]));
+		expect(wrapper?.className).toContain("visible");
+	});
+
+	it("can be the element itself rather than a wrapper", () => {
+		// A heading must stay a heading: wrapping it in a div would break the
+		// grid it sits in and remove it from the document outline.
+		render(
+			<Reveal as="h2">
+				<span>Who am I?</span>
+			</Reveal>,
+		);
+		expect(
+			screen.getByRole("heading", { level: 2, name: "Who am I?" }),
+		).toBeVisible();
+	});
+
+	it("delays its fade when told to, for sequencing", () => {
+		const { container } = render(
+			<Reveal delay={500}>
+				<p>content</p>
+			</Reveal>,
+		);
+		expect(container.firstElementChild).toHaveStyle({
+			transitionDelay: "500ms",
+		});
+	});
+
+	it("sets no delay by default", () => {
+		const { container } = render(
+			<Reveal>
+				<p>content</p>
+			</Reveal>,
+		);
+		expect(container.firstElementChild).not.toHaveAttribute("style");
+	});
+
 	it("stops observing when unmounted", () => {
 		const { disconnect } = stubObserver();
 		const { unmount } = render(
