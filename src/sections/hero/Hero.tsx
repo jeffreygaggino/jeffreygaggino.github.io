@@ -1,4 +1,5 @@
 import { CodeTag } from "../../components/CodeTag";
+import { Reveal } from "../../components/Reveal";
 import { HERO_NAME_ID } from "../../components/SiteHeader";
 import { TagLink } from "../../components/TagLink";
 import { linkedin } from "../../content/profileLinks";
@@ -23,7 +24,9 @@ export function Hero() {
 					<TagLink href={linkedin.href}>{linkedin.label}</TagLink>
 				</p>
 			</div>
-			<Drawing drawing={JEFFREY} variant="wash" className={styles.drawing} />
+			<Reveal className={styles.drawing}>
+				<Drawing drawing={JEFFREY} variant="wash" />
+			</Reveal>
 		</section>
 	);
 }

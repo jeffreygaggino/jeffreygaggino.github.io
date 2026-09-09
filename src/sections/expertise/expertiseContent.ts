@@ -9,10 +9,10 @@ export const expertiseContent = {
 			label: "Backend",
 			items: [
 				"Microservice architecture",
+				"PostgreSQL",
 				"Gin",
 				"Node.js",
 				"REST",
-				"PostgreSQL",
 				"Cassandra",
 			],
 		},

@@ -1,4 +1,5 @@
 import { CodeTag } from "../../components/CodeTag";
+import { Reveal } from "../../components/Reveal";
 import { Drawing } from "../../drawing/Drawing";
 import { SKILLS } from "../../drawing/skills";
 import text from "../../styles/text.module.css";
@@ -18,7 +19,13 @@ export function About() {
 					</p>
 				))}
 			</div>
-			<Drawing drawing={SKILLS} variant="wash" className={styles.drawing} />
+			<Reveal
+				className={styles.drawing}
+				rootMargin="0px 0px -25% 0px"
+				threshold={0.5}
+			>
+				<Drawing drawing={SKILLS} variant="wash" />
+			</Reveal>
 		</section>
 	);
 }

@@ -1,0 +1,17 @@
+/*
+ * Fades its content in as it enters view and back out as it leaves. The
+ * transform is small on purpose: enough to give the fade a direction,
+ * not enough to read as movement for its own sake.
+ */
+.reveal {
+	opacity: 0;
+	transform: translateY(1rem);
+	transition:
+		opacity 600ms ease,
+		transform 600ms ease;
+}
+
+.visible {
+	opacity: 1;
+	transform: none;
+}

@@ -41,3 +41,15 @@
 	max-width: 16rem;
 	width: 100%;
 }
+
+/*
+ * On desktop the prose and the drawing sit side by side, and pinning the
+ * drawing to the top of the row put it level with the heading, so it entered
+ * the viewport at the same moment the section did. Centring it against the
+ * prose drops it far enough down the page to arrive on its own.
+ */
+@media (min-width: 52rem) {
+	.drawing {
+		align-self: center;
+	}
+}
