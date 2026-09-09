@@ -67,6 +67,12 @@
 :global([data-theme="dark"]) .outline .part[data-solid] {
 	fill: var(--drawing-line);
 	fill-opacity: 1;
+	/*
+	 * No outline on a solid Part. It would be the same colour as the fill,
+	 * so it only fattens the shape, and on something thin like the mouth it
+	 * draws both sides of the curve and reads as a double line.
+	 */
+	stroke: none;
 }
 
 /* Parts that only make sense in full colour are dropped from the line art. */

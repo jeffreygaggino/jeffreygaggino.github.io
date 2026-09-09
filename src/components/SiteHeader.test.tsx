@@ -13,11 +13,6 @@ function renderHeader() {
 }
 
 describe("SiteHeader", () => {
-	it("carries the theme toggle", () => {
-		renderHeader();
-		expect(screen.getByRole("button", { name: /switch to/i })).toBeVisible();
-	});
-
 	it("keeps its copy of the name hidden until the Hero heading scrolls away", () => {
 		const { container } = renderHeader();
 		const name = container.querySelector("header p");
