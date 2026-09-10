@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <title>Jeffrey Gaggino</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        --surface: #0f1b26;
+        --text: #e6edf3;
+        --text-muted: #9fb3c8;
+      }
+      :root[data-theme="light"] {
+        color-scheme: light;
+        --surface: #f1f2f2;
+        --text: #102a44;
+        --text-muted: #5e85a1;
+      }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        padding: 24px;
+        background: var(--surface);
+        color: var(--text);
+        font-family: system-ui, sans-serif;
+        text-align: center;
+      }
+      p {
+        color: var(--text-muted);
+      }
+      a {
+        color: inherit;
+      }
+    </style>
+    <script>
+      // Same stored Theme the main page reads, so this never flashes white at
+      // a visitor who chose dark.
+      try {
+        const stored = localStorage.getItem("theme");
+        if (stored === "light" || stored === "dark") {
+          document.documentElement.dataset.theme = stored;
+        }
+      } catch {}
+
+      // GitHub Pages serves this file for every path that is not a real file.
+      // Only the previous site's routes are worth catching: those links are
+      // out there, and the page they asked for is now a section of the one
+      // page. Anything else was never a route here and gets a not-found page.
+      const previousRoutes = ["/about", "/skills", "/contact"];
+      const path = location.pathname.toLowerCase().replace(/\/+$/, "");
+      // The previous site's routes were prefix matches, so /about/anything
+      // rendered About too.
+      if (previousRoutes.some((route) => path === route || path.startsWith(route + "/"))) {
+        // replace, not assign: the old URL should not sit in the back history.
+        location.replace("/");
+      }
+    </script>
+  </head>
+  <body>
+    <div>
+      <h1>Page not found</h1>
+      <p>Nothing lives at this address. <a href="/">Back to the site</a>.</p>
+    </div>
+  </body>
+</html>
