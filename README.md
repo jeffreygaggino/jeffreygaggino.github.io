@@ -1,7 +1,7 @@
-# jeffreygaggino.github.io
+# jeffreygaggino.com
 
 Jeffrey Gaggino's personal site. A single scrolling page, deployed to GitHub Pages at
-[jeffreygaggino.github.io](https://jeffreygaggino.github.io/).
+[jeffreygaggino.com](https://jeffreygaggino.com/).
 
 ## Running it
 
