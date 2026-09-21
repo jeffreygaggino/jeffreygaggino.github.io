@@ -4,12 +4,9 @@ const READY_CLASS = "fonts-ready";
 const FALLBACK_MS = 2000;
 
 /**
- * Marks the document once the hand-drawn font has actually loaded.
- *
  * The CodeTag brackets are the only thing using Caveat. Without this they
- * paint in the fallback cursive first and then snap to Caveat, which is a
- * visible change of typeface on a piece of decoration. They stay hidden
- * until the real font is ready, then fade in.
+ * paint in the fallback cursive and then snap to Caveat, a visible change of
+ * typeface on a piece of decoration. They stay hidden until it is ready.
  */
 export function markFontsWhenReady(): void {
 	const reveal = () => {

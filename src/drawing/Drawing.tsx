@@ -7,28 +7,18 @@ export type DrawingVariant = "filled" | "outline" | "wash";
 
 type DrawingProps = {
 	drawing: DrawingData;
-	/**
-	 * "filled" paints each Part in its Token, "outline" draws line art only,
-	 * "wash" tints the Parts and lets the line carry the shape.
-	 */
+	/** "filled" paints each Part in its Token, "outline" is line art only, "wash" tints under the line. */
 	variant?: DrawingVariant;
-	/** Overrides the Drawing's own description, where context needs a different one. */
 	label?: string;
 	className?: string;
 };
 
 /**
- * Renders a Drawing from Part data.
- *
- * Every Part is coloured by the Token it names, so a Theme change swaps the
- * whole figure without touching this component or the stylesheet.
- */
-/**
  * How far through the Drawing a Part sits, from 0 to 1.
  *
- * The theme transition is staggered by this rather than by raw index, so a
- * 22-part figure and a 4-part window take the same total time. A fixed delay
- * per Part made the simpler drawings finish long before the others.
+ * The theme transition staggers on this rather than raw index, so a 22-part
+ * figure and a 4-part window take the same total time. A fixed delay per Part
+ * made the simpler drawings finish long before the others.
  */
 function stagger(index: number, total: number): number {
 	if (total <= 1) return 0;
