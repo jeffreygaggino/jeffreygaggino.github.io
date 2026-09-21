@@ -6,8 +6,5 @@ export type ThemeContextValue = {
 	toggleTheme: () => void;
 };
 
-/**
- * Vue's provide/inject. Kept in its own file so the provider module only
- * exports components. React Fast Refresh gets confused otherwise.
- */
+/** Kept out of the provider module so that file only exports components, which Fast Refresh requires. */
 export const ThemeContext = createContext<ThemeContextValue | null>(null);

@@ -1,11 +1,9 @@
 import type { TokenName } from "../theme/tokens";
 
 export type Part = {
-	/** Stable identity of this piece of the Drawing, e.g. "hair". */
 	name: string;
 	/** The Token that colours it. Never a literal colour. */
 	token: TokenName;
-	/** SVG path geometry. */
 	d: string;
 	/**
 	 * Fills this Part solid in the line colour when the Drawing is rendered
@@ -21,7 +19,7 @@ export type Part = {
 };
 
 export type DrawingData = {
-	/** Describes the whole Drawing to screen readers. */
+	/** Announced to screen readers in place of the figure. */
 	label: string;
 	viewBox: string;
 	parts: readonly Part[];

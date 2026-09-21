@@ -1,12 +1,5 @@
 import { useEffect, useState } from "react";
 
-/**
- * Whether the element with this id has scrolled up out of view.
- *
- * A case where useEffect is the right tool, and worth contrasting with Vue:
- * it is not watching React state, it is subscribing to something outside
- * React entirely and unsubscribing on cleanup.
- */
 export function useScrolledPast(elementId: string): boolean {
 	const [past, setPast] = useState(false);
 

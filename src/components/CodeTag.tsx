@@ -2,15 +2,12 @@ import type { ReactNode } from "react";
 import styles from "./CodeTag.module.css";
 
 type CodeTagProps = {
-	/** The element name to draw, without angle brackets. */
+	/** The element name, without angle brackets. */
 	tag: string;
 	children: ReactNode;
 };
 
 /**
- * Wraps content in hand-drawn opening and closing HTML tags, the device the
- * previous site used on its headings and links.
- *
  * The brackets are real elements rather than ::before/::after content so they
  * can carry aria-hidden. Pseudo-element content is announced by some screen
  * readers, which would have read "less than h1 greater than" before the

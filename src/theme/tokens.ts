@@ -19,9 +19,8 @@ export const TOKEN_NAMES = [
 export type TokenName = (typeof TOKEN_NAMES)[number];
 
 /**
- * Maps each Token to the CSS custom property that resolves it.
- * Using a Record means adding a Token without giving it a variable
- * is a compile error rather than an invisible limb.
+ * A Record, not a partial map: adding a Token without giving it a variable is
+ * a compile error rather than an invisible limb.
  */
 export const TOKEN_VAR: Record<TokenName, string> = {
 	ink: "var(--token-ink)",

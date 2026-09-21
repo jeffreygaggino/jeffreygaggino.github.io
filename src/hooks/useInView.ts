@@ -1,17 +1,12 @@
 import { type RefObject, useEffect, useState } from "react";
 
 export type InViewOptions = {
-	/** Grows or shrinks the trigger area, e.g. "0px 0px -15% 0px". */
 	rootMargin?: string;
-	/** How much of the element must be visible before it counts, 0 to 1. */
 	threshold?: number | number[];
-	/** Stay true once seen. Use for anything holding text. */
 	once?: boolean;
 };
 
 /**
- * Whether the referenced element is currently in view.
- *
  * Reports both directions, so a caller can fade something out again when it
  * leaves. Where IntersectionObserver is unavailable it reports true rather
  * than false, so content is never left permanently hidden.
